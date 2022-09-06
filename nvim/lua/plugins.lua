@@ -20,7 +20,7 @@ vim.cmd [[
 return require("packer").startup({function(use)
   use "wbthomason/packer.nvim"
   
-  -- mason
+  -- Mason
   use {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -30,12 +30,33 @@ return require("packer").startup({function(use)
   -- Colorschemes
   use "folke/tokyonight.nvim"
 
+  -- Rust-tools
+  use "simrat39/rust-tools.nvim"
+
+  -- Cmp plugins
+  use {
+   "hrsh7th/nvim-cmp",
+   -- Sources
+   "hrsh7th/cmp-nvim-lsp",
+   "hrsh7th/cmp-buffer",
+   "hrsh7th/cmp-path",
+   "hrsh7th/cmp-cmdline",
+   "hrsh7th/cmp-nvim-lua",
+   -- Source but snippet Engine 
+   "L3MON4D3/LuaSnip",
+   -- Snippets for LuaSnip 
+   "rafamadriz/friendly-snippets",
+  }
+
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end
 end,
+
+-- Have packer use a popup window
 config = {
   display = {
     open_fn = function()
