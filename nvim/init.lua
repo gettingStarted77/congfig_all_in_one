@@ -10,8 +10,9 @@ require "plugins"
 require "lsp.mason"
 require "lsp.lsp-diagnostic"
 
--- Cmp
-require "cmp.cmp"
+-- code
+require "code.cmp"
+require "code.treesitter"
 
 -- Rust
 require "lsp.rust-tools"

@@ -30,9 +30,18 @@ return require("packer").startup({function(use)
   -- Colorschemes
   use "folke/tokyonight.nvim"
 
+  -- Treesitter
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+  }
+
   -- Rust-tools
   use "simrat39/rust-tools.nvim"
 
+  -------------
+  -- Code
+  -------------
   -- Cmp plugins
   use {
    "hrsh7th/nvim-cmp",
@@ -47,7 +56,11 @@ return require("packer").startup({function(use)
    -- Snippets for LuaSnip 
    "rafamadriz/friendly-snippets",
   }
-
+  -- Autopair
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  } 
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
