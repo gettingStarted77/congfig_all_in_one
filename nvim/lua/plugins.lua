@@ -19,7 +19,7 @@ vim.cmd [[
 
 return require("packer").startup({function(use)
   use "wbthomason/packer.nvim"
-  
+
   -- Mason
   use {
       "williamboman/mason.nvim",
@@ -61,7 +61,7 @@ return require("packer").startup({function(use)
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
-  } 
+  }
 
   -- Others
   use "nvim-lua/plenary.nvim"
