@@ -6,9 +6,9 @@ require "basic.keymaps"
 -- Plugins
 require "plugins"
 
+-- Lsp
+require "lsp"
+
 -- code
 require "code.cmp"
 require "code.treesitter"
-
--- Lsp
-require "lsp"
