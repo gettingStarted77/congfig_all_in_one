@@ -1,14 +1,18 @@
--- Basic setting
+---------- BASIC ----------
 require "basic.options"
 require "basic.colorscheme"
 require "basic.keymaps"
 
--- Plugins
+
+---------- PLUGINS ----------
 require "plugins"
 
--- Lsp
-require "lsp"
 
--- code
+---------- UI ----------
+require "ui"
+
+
+---------- CODE ----------
+require "lsp"
 require "code.cmp"
 require "code.treesitter"

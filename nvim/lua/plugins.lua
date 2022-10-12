@@ -20,29 +20,24 @@ vim.cmd [[
 return require("packer").startup({function(use)
   use "wbthomason/packer.nvim"
 
+
+  ---------- UI ---------- 
+  -- Colorschemes
+  use "folke/tokyonight.nvim"
+  -- Lueline
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
+
+  ---------- CODE ---------- 
   -- Mason
   use {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
   }
-
-  -- Colorschemes
-  use "folke/tokyonight.nvim"
-
-  -- Treesitter
-  use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate'
-  }
-
-  -- Rust
-  use "simrat39/rust-tools.nvim"
-  use "mfussenegger/nvim-dap"
-
-  -------------
-  -- Code
-  -------------
   -- Cmp plugins
   use {
    "hrsh7th/nvim-cmp",
@@ -57,11 +52,22 @@ return require("packer").startup({function(use)
    -- Snippets for LuaSnip 
    "rafamadriz/friendly-snippets",
   }
+  -- Treesitter
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+  }
   -- Autopair
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
+
+
+  ---------- RUST ---------- 
+  use "simrat39/rust-tools.nvim"
+  use "mfussenegger/nvim-dap"
+
 
   -- Others
   use "nvim-lua/plenary.nvim"
