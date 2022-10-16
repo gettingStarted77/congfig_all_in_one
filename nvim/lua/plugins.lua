@@ -77,8 +77,11 @@ return require("packer").startup({function(use)
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
-
-
+  -- Formatter
+  use {'akinsho/bufferline.nvim',
+        tag = "v2.*",
+        requires = 'kyazdani42/nvim-web-devicons'
+      }
   ---------- RUST ---------- 
   use "simrat39/rust-tools.nvim"
   use "mfussenegger/nvim-dap"

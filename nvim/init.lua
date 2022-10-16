@@ -1,15 +1,14 @@
----------- BASIC ----------
+-------- BASIC ---------
 require "basic.options"
 require "basic.colorscheme"
 require "basic.keymaps"
 
----------- PLUGINS ----------
+------- PLUGINS --------
 require "plugins"
 
 ---------- UI ----------
 require "ui"
 
----------- CODE ----------
+----- LSP AND CODE -----
 require "lsp"
-require "code.cmp"
-require "code.treesitter"
+require "code"
