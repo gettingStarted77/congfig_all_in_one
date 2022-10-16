@@ -29,8 +29,12 @@ return require("packer").startup({function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
-  -- Dashboard
-  --use {'glepnir/dashboard-nvim'}
+  -- alpha-nvim 
+  use { 'kyazdani42/nvim-web-devicons' }
+  use {
+      'goolord/alpha-nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' }
+  }
   -- Nvim-tree
   use {
     'nvim-tree/nvim-tree.lua',
@@ -39,6 +43,8 @@ return require("packer").startup({function(use)
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
+  -- terminal 
+  use {"akinsho/toggleterm.nvim"}
 
   ---------- CODE ---------- 
   -- Mason
