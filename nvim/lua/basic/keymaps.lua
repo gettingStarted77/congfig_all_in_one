@@ -3,6 +3,10 @@ local keymap = vim.api.nvim_set_keymap
 -- Silent keymap option
 local opts = { silent = true }
 
+--Remap space as leader key
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+
 
 -- Modes
 --   normal_mode = "n",
@@ -50,7 +54,7 @@ keymap("v", ">", ">gv", opts)
 -- Plugins --
 
 -- NvimTree
-keymap("n", "<leader>e", ":Ranger<CR>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
