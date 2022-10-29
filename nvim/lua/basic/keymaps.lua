@@ -1,15 +1,13 @@
 -- Shorten function name
-local keymap = vim.keymap.set
--- Silent keymap option
-local opts = { remap=false, silent = false }
-
+local keymap = vim.keymap.set -- Silent keymap option
+local opts = { remap = false, silent = false }
 -- Remap space as leader key vim.g.mapleader = ' '
 vim.g.mapleader = ' '
 
 --Modes
 --                           *map-table*
---          Mode  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |  
--- Command        +------+-----+-----+-----+-----+-----+------+------+  
+--          Mode  | Norm | Ins | Cmd | Vis | Sel | Opr | Term | Lang |
+-- Command        +------+-----+-----+-----+-----+-----+------+------+
 -- [nore]map      | yes  |  -  |  -  | yes | yes | yes |  -   |  -   |
 -- n[nore]map     | yes  |  -  |  -  |  -  |  -  |  -  |  -   |  -   |
 -- [nore]map!     |  -   | yes | yes |  -  |  -  |  -  |  -   |  -   |
@@ -35,7 +33,7 @@ keymap('n', '<C-Down>', '<Cmd>resize +2<CR>', opts)
 keymap('n', '<C-Left>', '<Cmd>vertical resize -2<CR>', opts)
 keymap('n', '<C-Right>', '<Cmd>vertical resize +2<CR>', opts)
 
--- Navigate buffers 
+-- Navigate buffers
 keymap('n', '<S-l>', '<Cmd>bnext<CR>', opts)
 keymap('n', '<S-h>', '<Cmd>bprevious<CR>', opts)
 
@@ -46,10 +44,13 @@ keymap('n', '<S-q>', '<Cmd>bdelete<CR>', opts)
 keymap('n', '<leader>h', '<Cmd>nohlsearch<CR>', opts)
 
 -- Copy/paste from clipboard
-keymap({'n', 'v'}, 'cy', '"+y', opts)
-keymap({'n', 'v'}, 'cp', '"+p', opts)
+keymap({ 'n', 'v' }, 'cy', '"+y', opts)
+keymap({ 'n', 'v' }, 'cp', '"+p', opts)
 
--- Insert --
+-- Better paste
+keymap({ 'n', 'v' }, '<leader>p', '"_dP', opts)
+
+-- keymap --
 -- Press jk fast to enter
 keymap('i', 'jk', '<ESC>', opts)
 keymap('i', 'kj', '<ESC>', opts)
@@ -77,6 +78,6 @@ keymap('n', '<leader>fb', '<Cmd>Telescope buffers<CR>', opts)
 -- Diagnostic --
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 --vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-keymap('n', '[d', vim.diagnostic.goto_prev, { desc='diagnostic.goto_prev' })
-keymap('n', ']d', vim.diagnostic.goto_next, { desc='diagnostic.goto_next' })
-keymap('n', '<space>q', vim.diagnostic.setloclist, { desc='diagnostic.setloclist' })
+keymap('n', '[d', vim.diagnostic.goto_prev, { desc = 'diagnostic.goto_prev' })
+keymap('n', ']d', vim.diagnostic.goto_next, { desc = 'diagnostic.goto_next' })
+keymap('n', '<space>q', vim.diagnostic.setloclist, { desc = 'diagnostic.setloclist' })
