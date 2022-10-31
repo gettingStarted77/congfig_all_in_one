@@ -1,11 +1,16 @@
-local fn = vim.fn
-
 -- Automatically install packer
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd [[packadd packer.nvim]]
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -32,17 +37,19 @@ return require("packer").startup({function(use)
   -- alpha-nvim 
   use { 'kyazdani42/nvim-web-devicons' }
   use {
-      'goolord/alpha-nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' }
-  }
+      'goolord/alpha-nvim', requires = { 'kyazdani42/nvim-web-devicons' } }
   -- Nvim-tree
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
+  -- Bufferline
+  use {'akinsho/bufferline.nvim',
+        tag = "v2.*",
+        requires = 'kyazdani42/nvim-web-devicons'
+      }
   -- terminal 
   use {"akinsho/toggleterm.nvim"}
 
@@ -77,11 +84,13 @@ return require("packer").startup({function(use)
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
-  -- Formatter
-  use {'akinsho/bufferline.nvim',
-        tag = "v2.*",
-        requires = 'kyazdani42/nvim-web-devicons'
-      }
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+        require("null-ls").setup()
+    end,
+    requires = { "nvim-lua/plenary.nvim" },
+  })
   ---------- RUST ---------- 
   use "simrat39/rust-tools.nvim"
   use "mfussenegger/nvim-dap"
