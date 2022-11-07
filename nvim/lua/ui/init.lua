@@ -1,5 +1,0 @@
-require "ui.lualine"
-require "ui.nvim-tree"
-require "ui.toggleterm"
-require "ui.alpha-nvim"
-require "ui.bufferline"
